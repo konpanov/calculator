@@ -141,3 +141,6 @@ response (400):
 }
 ```
 
+
+## Test Coverage
+Test coverage reports for both sides are available in ./coverprofiles/ folder
