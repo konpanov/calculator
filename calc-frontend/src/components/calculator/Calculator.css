@@ -1,0 +1,106 @@
+.calc {
+  --bg: #14161a;
+  --panel: #1e2126;
+  --panel-edge: #262a31;
+  --display-bg: #0b0d10;
+  --digit-glow: #b9f7e0;
+  --digit-dim: #6f9c8c;
+  --key-num-bg: #2a2e35;
+  --key-num-bg-hover: #33383f;
+  --key-num-fg: #edeff2;
+  --key-fn-bg: #3a3f47;
+  --key-fn-bg-hover: #454b54;
+  --key-fn-fg: #c9cdd3;
+  --key-op-bg: #3f6c6e;
+  --key-op-bg-hover: #4c8385;
+  --key-op-bg-active: #59999b;
+  --key-op-fg: #eafffb;
+  --key-eq-bg: #b9f7e0;
+  --key-eq-bg-hover: #cbfae7;
+  --key-eq-fg: #0b0d10;
+
+  width: min(360px, 92vw);
+  background: var(--panel);
+  border: 1px solid var(--panel-edge);
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.calc * {
+  box-sizing: border-box;
+}
+
+.calc .display {
+  background: var(--display-bg);
+  border-radius: 12px;
+  padding: 22px 18px 16px;
+  margin-bottom: 16px;
+  text-align: right;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.calc .prev {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: var(--digit-dim);
+  min-height: 25;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.calc .curr {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: clamp(28px, 9vw, 40px);
+  color: var(--digit-glow);
+  text-shadow: 0 0 18px rgba(185, 247, 224, 0.35);
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.calc .keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.calc button.key {
+  border: none;
+  border-radius: 12px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px 0;
+  cursor: pointer;
+  transition: background 0.12s ease, transform 0.05s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.calc button.key:active {
+  transform: scale(0.96);
+}
+
+.calc .num { background: var(--key-num-bg); color: var(--key-num-fg); }
+.calc .num:hover { background: var(--key-num-bg-hover); }
+.calc .fn { background: var(--key-fn-bg); color: var(--key-fn-fg); }
+.calc .fn:hover { background: var(--key-fn-bg-hover); }
+.calc .op { background: var(--key-op-bg); color: var(--key-op-fg); }
+.calc .op:hover { background: var(--key-op-bg-hover); }
+.calc .op.active { background: var(--key-op-bg-active); }
+.calc .eq { background: var(--key-eq-bg); color: var(--key-eq-fg); }
+.calc .eq:hover { background: var(--key-eq-bg-hover); }
+.calc .span2 { grid-column: span 2; }
+
+.calc button:focus-visible {
+  outline: 2px solid var(--digit-glow);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .calc button.key { transition: none; }
+}
